@@ -24,7 +24,7 @@ public class GoogleExampleIT extends DriverBase {
         WebDriver driver = new FirefoxDriver();
 
         driver.get("http://localhost:80");  //переходим на страницу
-
+        driver.get("www.google.com");
         String title = driver.getTitle();
         assertThat(title).contains("Restaurant");  //проверяем название страницы на содержание слова "Restaurant"
 
@@ -38,7 +38,7 @@ public class GoogleExampleIT extends DriverBase {
         WebDriver driver = new FirefoxDriver();
 
         // Переходим на главную страницу вашего сайта
-        driver.get("http://ваш_сайт.com");
+        driver.get("http://localhost:80");
 
         // Находим поле поиска и вводим "Milk"
         WebElement searchBox = driver.findElement(By.name("search")); // Замените на правильный селектор
