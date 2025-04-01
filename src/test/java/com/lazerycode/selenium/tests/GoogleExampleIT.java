@@ -34,20 +34,19 @@ public class GoogleExampleIT extends DriverBase {
         WebDriver driver = new FirefoxDriver();
 
         // Переходим на главную страницу вашего сайта
-        driver.get("http://localhost:80");
+        driver.get("http://localhost");
 
-        // Находим поле поиска и вводим "Milk"
-        WebElement searchBox = driver.findElement(By.name("search")); // Замените на правильный селектор
-        searchBox.sendKeys("Milk");
-        searchBox.submit();
-
-        // Ожидаем, пока заголовок страницы изменится
+        // Находим и кликаем по вкладке "Contact"
+        WebElement contactTab = driver.findElement(By.linkText("Contact")); // Замените на правильный селектор, если нужно
+        contactTab.click();
+        
+        // Ожидаем, пока страница загрузится
         Thread.sleep(2000); // Лучше использовать WebDriverWait для ожидания
-
-        // Проверяем, что заголовок страницы содержит "Milk"
-        String title = driver.getTitle();
-        assertThat(title).contains("Milk");
-
+        
+        // Проверяем, что на странице есть поле "Name"
+        WebElement nameField = driver.findElement(By.name("Name")); // Замените на правильный селектор
+        assertThat(nameField).isNotNull(); // Проверяем, что поле найдено
+        
         // Закрываем драйвер
         driver.quit();
     }
