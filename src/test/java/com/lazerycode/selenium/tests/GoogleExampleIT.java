@@ -3,7 +3,11 @@ package com.lazerycode.selenium.tests;
 import com.lazerycode.selenium.DriverBase;
 import com.lazerycode.selenium.page_objects.GoogleHomePage;
 import com.lazerycode.selenium.page_objects.GoogleSearchPage;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -11,61 +15,53 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class GoogleExampleIT extends DriverBase {
 
 
-    @Test
-    public void googleCheeseExample() throws Exception {
-        // Create a new WebDriver instance
-        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-        // Notice that the remainder of the code relies on the interface, not the implementation.
-        WebDriver driver = getDriver();
+     @Test
+    public void searchForCheese() throws Exception {
+        // Устанавливаем системное свойство для GeckoDriver
+        System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver"); // Укажите путь к geckodriver
+        WebDriver driver = new FirefoxDriver();
 
-        // First of all, let's navigate to the google home page
-        driver.get("http://www.google.com");
-        // Alternatively the same thing can be done like this
-        // driver.navigate().to("http://www.google.com");
+        // Переходим на главную страницу вашего сайта
+        driver.get("http://");
 
-        //Instantiate an instance of our GoogleHomePage page object
-        //GoogleHomePage googleHomePage = new GoogleHomePage();
+        // Находим поле поиска и вводим "Cheese"
+        WebElement searchBox = driver.findElement(By.name("search")); // Замените на правильный селектор
+        searchBox.sendKeys("Cheese");
+        searchBox.submit();
 
-        // First we agree to Google's cookie usage terms
-        //googleHomePage.acceptCookies();
+        // Ожидаем, пока заголовок страницы изменится
+        Thread.sleep(2000); // Лучше использовать WebDriverWait для ожидания
 
-        // Then we perform a google search for Cheese
-        //GoogleSearchPage googleSearchPage = googleHomePage.enterSearchTerm("Cheese").submitSearch();
+        // Проверяем, что заголовок страницы содержит "Cheese"
+        String title = driver.getTitle();
+        assertThat(title).contains("Cheese");
 
-        // Google's search is rendered dynamically with JavaScript.
-        // We wait for up to 15 seconds for the page to load, an exception is thrown if it doesn't
-        //googleSearchPage.waitForPageTitleToStartWith("Cheese");
-
-        //Normally you would have some assertions to check things that you really care about
-        assertThat("Поиск Google").isEqualTo("Поиск Google");
+        // Закрываем драйвер
+        driver.quit();
     }
 
     @Test
-    public void googleMilkExample() throws Exception {
-        // Create a new WebDriver instance
-        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-        // Notice that the remainder of the code relies on the interface, not the implementation.
-        //WebDriver driver = getDriver();
+    public void searchForMilk() throws Exception {
+        // Устанавливаем системное свойство для GeckoDriver
+        System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver"); // Укажите путь к geckodriver
+        WebDriver driver = new FirefoxDriver();
 
-        // First of all, let's navigate to the google home page
-        //driver.get("http://www.google.com");
-        // Alternatively the same thing can be done like this
-        // driver.navigate().to("http://www.google.com");
+        // Переходим на главную страницу вашего сайта
+        driver.get("http://ваш_сайт.com");
 
-        //Instantiate an instance of our GoogleHomePage page object
-        //GoogleHomePage googleHomePage = new GoogleHomePage();
+        // Находим поле поиска и вводим "Milk"
+        WebElement searchBox = driver.findElement(By.name("search")); // Замените на правильный селектор
+        searchBox.sendKeys("Milk");
+        searchBox.submit();
 
-        // First we agree to Google's cookie usage terms
-        //googleHomePage.acceptCookies();
+        // Ожидаем, пока заголовок страницы изменится
+        Thread.sleep(2000); // Лучше использовать WebDriverWait для ожидания
 
-        // Then we perform a google search for Cheese
-        //GoogleSearchPage googleSearchPage = googleHomePage.enterSearchTerm("Milk").submitSearch();
+        // Проверяем, что заголовок страницы содержит "Milk"
+        String title = driver.getTitle();
+        assertThat(title).contains("Milk");
 
-        // Google's search is rendered dynamically with JavaScript.
-        // We wait for up to 15 seconds for the page to load, an exception is thrown if it doesn't
-        //googleSearchPage.waitForPageTitleToStartWith("milk");
-
-        //Normally you would have some assertions to check things that you really care about
-        assertThat("Поиск Google").isEqualTo("Поиск Google");
+        // Закрываем драйвер
+        driver.quit();
     }
 }
