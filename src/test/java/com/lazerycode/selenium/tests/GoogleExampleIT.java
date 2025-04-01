@@ -17,27 +17,15 @@ public class GoogleExampleIT extends DriverBase {
 
      @Test
     public void searchForCheese() throws Exception {
-        // Устанавливаем системное свойство для GeckoDriver
-        System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver"); // Укажите путь к geckodriver
+        System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
         WebDriver driver = new FirefoxDriver();
 
-        // Переходим на главную страницу вашего сайта
-        driver.get("http://");
+        driver.get("http://localhost");  //переходим на страницу
 
-        // Находим поле поиска и вводим "Cheese"
-        WebElement searchBox = driver.findElement(By.name("search")); // Замените на правильный селектор
-        searchBox.sendKeys("Cheese");
-        searchBox.submit();
-
-        // Ожидаем, пока заголовок страницы изменится
-        Thread.sleep(2000); // Лучше использовать WebDriverWait для ожидания
-
-        // Проверяем, что заголовок страницы содержит "Cheese"
         String title = driver.getTitle();
-        assertThat(title).contains("Cheese");
+        assertThat(title).contains("Restaurant");  //проверяем название страницы на содержание слова "Restaurant"
 
-        // Закрываем драйвер
-        driver.quit();
+        driver.quit();  //закрываем драйвер
     }
 
     @Test
