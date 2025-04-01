@@ -23,7 +23,7 @@ public class GoogleExampleIT extends DriverBase {
         options.addArguments("--headless");
         WebDriver driver = new FirefoxDriver();
 
-        driver.get("http://localhost");  //переходим на страницу
+        driver.get("http://127.0.0.1");  //переходим на страницу
         String title = driver.getTitle();
         assertThat(title).contains("Restaurant");  //проверяем название страницы на содержание слова "Restaurant"
         
