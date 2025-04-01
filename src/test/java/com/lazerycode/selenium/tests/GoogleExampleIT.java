@@ -17,7 +17,7 @@ public class GoogleExampleIT extends DriverBase {
     public void searchForCheese() throws Exception {
         System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--headless");
+        options.setHeadless(true);
         WebDriver driver = new FirefoxDriver();
 
         driver.get("http://localhost");  //переходим на страницу
