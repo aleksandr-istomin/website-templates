@@ -5,4 +5,4 @@ FROM ubuntu/nginx
 COPY . /usr/share/nginx/html/site_template
 #
 # Открываем порт 80
-EXPOSE 80
+EXPOSE 3000
