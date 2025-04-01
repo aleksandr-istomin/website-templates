@@ -37,16 +37,16 @@ public class GoogleExampleIT extends DriverBase {
         driver.get("http://localhost");
 
         // Находим и кликаем по вкладке "Contact"
-        WebElement contactTab = driver.findElement(By.linkText("Contact")); // Замените на правильный селектор, если нужно
+        WebElement contactTab = driver.findElement(By.linkText("сontact")); // Замените на правильный селектор, если нужно
         contactTab.click();
-        
+
         // Ожидаем, пока страница загрузится
         Thread.sleep(2000); // Лучше использовать WebDriverWait для ожидания
-        
+
         // Проверяем, что на странице есть поле "Name"
         WebElement nameField = driver.findElement(By.name("Name")); // Замените на правильный селектор
         assertThat(nameField).isNotNull(); // Проверяем, что поле найдено
-        
+
         // Закрываем драйвер
         driver.quit();
     }
