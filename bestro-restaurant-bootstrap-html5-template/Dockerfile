@@ -2,7 +2,7 @@
 FROM ubuntu/nginx
 
 # Копируем статические файлы в директорию Nginx
-COPY . /var/www/html
+COPY . /usr/share/nginx/html
 
 # Открываем порт 80
 EXPOSE 80
