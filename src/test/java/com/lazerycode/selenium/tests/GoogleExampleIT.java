@@ -24,7 +24,6 @@ public class GoogleExampleIT extends DriverBase {
         WebDriver driver = new FirefoxDriver();
 
         driver.get("http://localhost:80");  //переходим на страницу
-        driver.get("www.google.com");
         String title = driver.getTitle();
         assertThat(title).contains("Restaurant");  //проверяем название страницы на содержание слова "Restaurant"
 
