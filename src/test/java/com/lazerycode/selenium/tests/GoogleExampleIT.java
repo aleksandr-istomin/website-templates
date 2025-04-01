@@ -1,8 +1,6 @@
 package com.lazerycode.selenium.tests;
 
 import com.lazerycode.selenium.DriverBase;
-import com.lazerycode.selenium.page_objects.GoogleHomePage;
-import com.lazerycode.selenium.page_objects.GoogleSearchPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,15 +13,14 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class GoogleExampleIT extends DriverBase {
 
-
-     @Test
+    @Test
     public void searchForCheese() throws Exception {
         System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver");
         FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--headless");
         WebDriver driver = new FirefoxDriver();
 
-        driver.get("http://127.0.0.1");  //переходим на страницу
+        driver.get("http://localhost");  //переходим на страницу
         String title = driver.getTitle();
         assertThat(title).contains("Restaurant");  //проверяем название страницы на содержание слова "Restaurant"
         
