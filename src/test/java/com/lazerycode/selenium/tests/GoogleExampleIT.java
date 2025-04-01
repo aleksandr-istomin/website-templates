@@ -37,7 +37,7 @@ public class GoogleExampleIT extends DriverBase {
         driver.get("http://localhost");
 
         // Находим и кликаем по вкладке "Contact"
-        WebElement contactTab = driver.findElement(By.linkText("сontact")); // Замените на правильный селектор, если нужно
+        WebElement contactTab = driver.findElement(By.linkText("Contact"))); // Замените на правильный селектор, если нужно
         contactTab.click();
 
         // Ожидаем, пока страница загрузится
