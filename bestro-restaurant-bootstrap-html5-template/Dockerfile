@@ -1,5 +1,5 @@
 # Используем официальный образ Nginx
-FROM nginx:alpine
+FROM ubuntu/nginx
 
 # Копируем статические файлы в директорию Nginx
 COPY . /usr/share/nginx/html
