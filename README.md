@@ -4,7 +4,7 @@
 
 <br/>
 
-## Table of content
+## Table of contents
 
 
 
